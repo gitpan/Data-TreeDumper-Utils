@@ -46,7 +46,7 @@ else
 	}
 }
 
-my $code = <<'EOC'
+my $code = <<'EOC';
 
 use strict ;
 use warnings ;
@@ -122,7 +122,6 @@ $self->SUPER::ACTION_dist();
 };
 
 EOC
-;
 
 my $class = Module::Build->subclass(class => 'Data::TreeDumper::Utils', code => $code) ;
 
@@ -141,6 +140,7 @@ my $build = $class->new
 		'Sort::Naturally' => 0,
 		'Check::ISA' => 0,
 		'Tie::IxHash'	=> 0,
+		'Data::TreeDumper' => 0.35,
 		
 		'Test::Block' => 0,
 		'Test::Exception' => 0,

@@ -1,6 +1,6 @@
 ---
 name: Data-TreeDumper-Utils
-version: 0.01.2
+version: 0.01.3
 author:
   - 'Nadim ibn hamouda el Khemir. <nkh@cpan.org>'
 abstract: A selection of utilities to use with Data::TreeDumper
@@ -9,6 +9,7 @@ resources:
   license: http://dev.perl.org/licenses/
 requires:
   Check::ISA: 0
+  Data::TreeDumper: 0.35
   Readonly: 0
   Sort::Naturally: 0
   Sub::Exporter: 0
