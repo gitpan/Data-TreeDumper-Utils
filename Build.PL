@@ -141,6 +141,7 @@ my $build = $class->new
 		'Check::ISA' => 0,
 		'Tie::IxHash'	=> 0,
 		'Data::TreeDumper' => 0.35,
+		'Sub::Uplevel' => 0.20,
 		
 		'Test::Block' => 0,
 		'Test::Exception' => 0,

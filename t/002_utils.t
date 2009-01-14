@@ -12,8 +12,6 @@ use Test::More 'no_plan';
 
 use Test::Block qw($Plan);
 
-#~ use Text::Diff ;
-
 use Data::TreeDumper ;
 use Data::TreeDumper::Utils  qw(:all) ;
 
@@ -157,6 +155,7 @@ filter_class_keys:
    `- IAM = A_BLUE_CONGO  [S11]
 EOD
 
+#~ use Text::Diff ;
 is($dump, $expected_dump, 'filter_class_keys') ; #or diag (diff(\$dump, \$expected_dump)) ; 
 }
 
@@ -175,29 +174,35 @@ Stack dump:
 |- 0 
 |  `- main::s1 
 |     |- ARGS (no elements) 
-|     |- AT = t/002_utils.t:171 
+|     |- AT = t/002_utils.t:170 
 |     |- CALLERS_PACKAGE = main 
 |     `- CONTEXT = scalar 
 |- 1 
 |  `- (eval) 
-|     |- AT = t/002_utils.t:167 
+|     |- AT = t/002_utils.t:166 
 |     |- CALLERS_PACKAGE = main 
 |     |- CONTEXT = scalar 
 |     `- EVAL = yes 
 |- 2 
 |  `- main::s2 
 |     |- ARGS (no elements) 
-|     |- AT = t/002_utils.t:167 
+|     |- AT = t/002_utils.t:166 
 |     |- CALLERS_PACKAGE = xxx 
 |     `- CONTEXT = scalar 
 `- 3 
    `- main::s3 
-      |- ARGS (no elements) 
-      |- AT = t/002_utils.t:168 
+      |- ARGS 
+      |  |- 0 = a 
+      |  `- 1 
+      |     |- 0 = 1 
+      |     |- 1 = 2 
+      |     `- 2 = 3 
+      |- AT = t/002_utils.t:167 
       |- CALLERS_PACKAGE = main 
       `- CONTEXT = scalar 
 EOD
 
-is($dump, $expected_dump, 'filter_class_keys') ;# or diag (diff(\$dump, \$expected_dump)) ; 
+#~ use Text::Diff ;
+is($dump, $expected_dump, 'filter_class_keys') ; #or diag (diff(\$dump, \$expected_dump)) ; 
 }
 

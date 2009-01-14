@@ -17,7 +17,7 @@ use Sub::Exporter -setup =>
 	};
 	
 use vars qw ($VERSION);
-$VERSION     = '0.01';
+$VERSION     = '0.02';
 }
 
 #-------------------------------------------------------------------------------
@@ -76,7 +76,8 @@ Data::TreeDumper::Utils - A selection of utilities to use with Data::TreeDumper
 
 =head1 DESCRIPTION
 
-A collection useful sorting filters and utilities that can be used with L<Data::TreeDumper>.
+A collection useful sorting filters and utilities that can be used with L<Data::TreeDumper>. You can also
+study the source if you examples of how to write filters.
 
 =head1 SUBROUTINES/METHODS
 
@@ -94,21 +95,25 @@ which the keys are rendered.
 
   print DumpTree
     (
-    $requirements_structure,
-    'Requirements structure:',
+    $structure,
+    'Structure:',
     
     # force specific keys to be rendered last
     FILTER => \&first_nsort_last_filter,
     FILTER_ARGUMENT =>
       {
-      AT_END => 
-        [
-        qr/NOT_CATEGORIZED/,
-        qr/NOT_FOUND/,
-        qr/STATISTICS/
-        ],
+      AT_START => ['ZZZ'],
+      AT_END => [qr/AB/],
       },
     ) ;
+
+generates:
+
+  Structure:
+  |- ZZZ = 1  
+  |- A = 1  
+  |- B = 1  
+  `- ABC = 1  
 
 B<Arguments>
 
@@ -274,8 +279,8 @@ sub hash_keys_sorter
 =head2 hash_keys_sorter()
 
 When no filter is given to L<Data::TreeDumper>, it will sort hash keys using L<Sort::Naturally>. If you create your
-own filter or have chaining filters, you will have to do the sorting yourself (if you want keys to be sorted) or this filter
-can be used with other filter to do the sorting.
+own filter or have chaining filters, you will have to do the sorting yourself (if you want keys to be sorted) or you can
+use this filter to do the sorting.
 
   # Remove keys starting with A, return in keys in the order the hash returns them
   DumpTree($s, 'not sorted', FILTER => \&remove_keys_starting_with_A,) ;
@@ -376,9 +381,9 @@ Note: this filter does not sort the keys!
       'HASH' => [qr/./],
       ),
     ) ;
-    
-  generates:
-  
+
+generates:
+
   filter_class_keys example:
   |- Z =  blessed in 'BlueCongo'  [OH1]
   |  `- IAM = A_BLUE_CONGO  [S2]
@@ -597,6 +602,5 @@ L<http://search.cpan.org/dist/Data-TreeDumper-Utils>
 =back
 
 =head1 SEE ALSO
-
 
 =cut
