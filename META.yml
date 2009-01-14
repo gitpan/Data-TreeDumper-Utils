@@ -1,6 +1,6 @@
 ---
 name: Data-TreeDumper-Utils
-version: 0.02.6
+version: 0.03.7
 author:
   - 'Nadim ibn hamouda el Khemir. <nkh@cpan.org>'
 abstract: A selection of utilities to use with Data::TreeDumper
@@ -14,16 +14,17 @@ requires:
   Sort::Naturally: 0
   Sub::Exporter: 0
   Sub::Uplevel: 0.2
+  Tie::IxHash: 0
+build_requires:
   Test::Block: 0
   Test::Exception: 0
   Test::NoWarnings: 0
-  Test::Strict: 0
   Test::Warn: 0
-  Tie::IxHash: 0
+  Text::Diff: 0
 provides:
   Data::TreeDumper::Utils:
     file: lib/Data/TreeDumper/Utils.pm
-    version: 0.02
+    version: 0.03
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

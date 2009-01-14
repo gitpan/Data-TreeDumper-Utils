@@ -132,7 +132,14 @@ my $build = $class->new
 	dist_version => GetVersionAndRevisionFrom('lib/Data/TreeDumper/Utils.pm'),
 	
 	license => 'perl',
-	
+	build_requires => 
+		{
+		'Text::Diff' => 0,
+		'Test::Block' => 0,
+		'Test::Exception' => 0,
+		'Test::NoWarnings' => 0,
+		'Test::Warn' => 0,
+		},
 	requires => 
 		{
 		'Readonly' => 0,
@@ -142,12 +149,6 @@ my $build = $class->new
 		'Tie::IxHash'	=> 0,
 		'Data::TreeDumper' => 0.35,
 		'Sub::Uplevel' => 0.20,
-		
-		'Test::Block' => 0,
-		'Test::Exception' => 0,
-		'Test::NoWarnings' => 0,
-		'Test::Warn' => 0,
-		'Test::Strict' => 0,
 		},
 		
 	pm_files     => \%all_modules,
